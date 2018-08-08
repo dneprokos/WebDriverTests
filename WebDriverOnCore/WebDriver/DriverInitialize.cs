@@ -1,17 +1,30 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using System;
+using WebDriverOnCore.TestsInit;
 
 namespace WebDriverOnCore.WebDriver
 {
     public static class DriverInitialize
     {
+        public static IWebDriver Browser { get; set; }
+
         public static IWebDriver GetWebDriver()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("disable-infobars");
-            IWebDriver webDriver = new ChromeDriver(options);
+            switch (TestRunSettings.GetBrowser)
+            {
+                case "Chrome":
+                    Browser = BrowserFactory.CreateChromeDriver();
+                    break;
+                case "FireFox":
+                    throw new NotImplementedException("Browser creation logic was not implemented");
+                default:
+                    throw new NotImplementedException("There is no such browser. Please use exists browsers");
+            }
 
-            return webDriver;
+            return Browser;
         }
+
+
+        
     }
 }
