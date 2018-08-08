@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Diagnostics;
 using WebDriverOnCore.TestUntillities;
 
 namespace WebDriverOnCore
@@ -12,7 +13,7 @@ namespace WebDriverOnCore
         [Category("Smoke")]
         [Description("Test asserts Football.ua site is available")]
         public void FootballUa_AssertWebSiteIsAvailable()
-        {
+        {           
             WebDriver.Navigate().GoToUrl(tempBaseUrl);
             Assert.AreEqual(tempBaseUrl, WebDriver.Url);
         }
