@@ -6,16 +6,21 @@ namespace WebDriverOnCore.WebDriver
 {
     public static class DriverInitialize
     {
-        public static IWebDriver Browser { get; set; }
+        private static IWebDriver _browser;
+        public static IWebDriver Browser { get => _browser; private set => _browser = value; }
 
-        public static IWebDriver GetWebDriver()
+        /// <summary>
+        /// Gets browser from Test.runsettings or return exception
+        /// </summary>
+        /// <returns></returns>
+        public static IWebDriver Start()
         {
-            switch (TestRunSettings.GetBrowser)
+            switch (TestSettings.GetBrowser)
             {
-                case "Chrome":
+                case nameof(BrowserType.Chrome):
                     Browser = BrowserFactory.CreateChromeDriver();
                     break;
-                case "FireFox":
+                case nameof(BrowserType.Firefox):
                     throw new NotImplementedException("Browser creation logic was not implemented");
                 default:
                     throw new NotImplementedException("There is no such browser. Please use exists browsers");

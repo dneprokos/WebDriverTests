@@ -2,7 +2,7 @@
 
 namespace WebDriverOnCore.TestsInit
 {
-    public static class TestRunSettings
+    public static class TestSettings
     {
         public static string GetBrowser => TestContext.Parameters["browser"];
 
