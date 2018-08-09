@@ -1,23 +1,24 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
 using WebDriverOnCore.WebDriver;
+using WebDriverOnCore.WebSiteNavigation;
 
 namespace WebDriverOnCore.TestUntillities
 {
     public class TestsBaseClass
     {
-        protected IWebDriver WebDriver { get; set; }
+        protected NavigationSteps navigation;
 
         [OneTimeSetUp]
-        public virtual void SetUp()
+        public virtual void TestFixtureSetUp()
         {
-            WebDriver = DriverInitialize.GetWebDriver();
+            DriverInitialize.Start();
+            navigation = new NavigationSteps();
         }
 
         [OneTimeTearDown]
-        public virtual void TearDown()
+        public virtual void TestFixtureTearDown()
         {
-            WebDriver.Quit();
+            DriverInitialize.Browser.Quit();
         }
     }
 }
