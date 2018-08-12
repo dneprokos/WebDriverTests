@@ -9,14 +9,26 @@ namespace WebDriverOnCore.TestUntillities
         protected NavigationSteps navigation;
 
         [OneTimeSetUp]
-        public virtual void TestFixtureSetUp()
+        protected virtual void TestFixtureSetUp()
         {
             DriverInitialize.Start();
             navigation = new NavigationSteps();
         }
 
+        [SetUp]
+        protected virtual void TestSetup()
+        {
+
+        }
+
+        [TearDown]
+        protected virtual void TestTearDown()
+        {
+
+        }
+
         [OneTimeTearDown]
-        public virtual void TestFixtureTearDown()
+        protected virtual void TestFixtureTearDown()
         {
             DriverInitialize.Browser.Quit();
         }

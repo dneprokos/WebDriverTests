@@ -138,6 +138,12 @@ Included items must then not match any entries in the exclude list to remain inc
   <TestRunParameters>  
     <Parameter name="browser" value="Chrome" />
     <Parameter name="baseUrl" value="http://football.ua/" />
+    <Parameter name="newsPage" value="newsarc/" />
+    <Parameter name="scoreboard" value="scoreboard/" />
+    <Parameter name="videoPage" value="video/" />
+    <Parameter name="photoGaleryPage" value="galleries/" />
+    <Parameter name="tvschedule" value="tvschedule/" />
+    <Parameter name="conferences" value="conferences/" />
   </TestRunParameters>
   
   
