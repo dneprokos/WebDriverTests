@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="C:\Users\dnepr\.nuget\packages\nlog.config\4.5.7\contentFiles\any\any\NLog.config">
+    <None Update="C:\Users\dnepr\.nuget\packages\nlog.config\4.5.7\contentFiles\any\any\NLog.config" Link="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
