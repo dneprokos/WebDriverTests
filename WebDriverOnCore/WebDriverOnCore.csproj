@@ -10,6 +10,7 @@
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="3.12.0" />
     <PackageReference Include="FluentAssertions" Version="5.4.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="NLog.Config" Version="4.5.7" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.14.0" />
@@ -30,6 +31,12 @@
 
   <ItemGroup>
     <Folder Include="PageElements\MainPageSections\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\dnepr\.nuget\packages\nlog.config\4.5.7\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
