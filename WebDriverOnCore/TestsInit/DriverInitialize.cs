@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using WebDriverOnCore.LoggerManager;
 using WebDriverOnCore.TestsInit;
 
 namespace WebDriverOnCore.WebDriver
@@ -19,6 +20,7 @@ namespace WebDriverOnCore.WebDriver
             {
                 case nameof(BrowserType.Chrome):
                     Browser = BrowserFactory.CreateChromeDriver();
+                    NLogManager.LogMessage.Info("Chrome WebDriver was created");
                     break;
                 case nameof(BrowserType.Firefox):
                     throw new NotImplementedException("Browser creation logic was not implemented");

@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using WebDriverOnCore.LoggerManager;
 
 namespace WebDriverOnCore.TestsInit
 {
@@ -8,7 +9,7 @@ namespace WebDriverOnCore.TestsInit
     {
         public static IWebDriver CreateChromeDriver()
         {
-            //Logger.Trace("Create Chrome Driver");
+            NLogManager.LogMessage.Info("Chrome WebDriver initialization was started");
             var options = new ChromeOptions();
             options.SetLoggingPreference(LogType.Driver, LogLevel.All);
             options.AddArguments("--disable-notifications");

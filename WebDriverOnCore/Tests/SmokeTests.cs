@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System.Linq;
+using WebDriverOnCore.LoggerManager;
 using WebDriverOnCore.PageObjects;
 using WebDriverOnCore.TestsData;
 using WebDriverOnCore.TestsInit;
@@ -16,8 +17,11 @@ namespace WebDriverOnCore
         protected override void TestSetup()
         {
             base.TestSetup();
-            commonSteps = new CommonPagesElementsSteps();
+
+            NLogManager.LogMessage.Info("Smoke tests setup was started");
+            commonSteps = new CommonPagesElementsSteps();            
             navigation.OpenWebSiteOnMainPage();
+            NLogManager.LogMessage.Info("Smoke tests setup was finished");
         } 
 
         [Test]
