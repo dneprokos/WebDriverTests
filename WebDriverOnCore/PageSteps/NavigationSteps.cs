@@ -1,4 +1,5 @@
-﻿using WebDriverOnCore.TestsInit;
+﻿using WebDriverOnCore.LoggerManager;
+using WebDriverOnCore.TestsInit;
 using WebDriverOnCore.WebDriver;
 
 namespace WebDriverOnCore.WebSiteNavigation
@@ -10,7 +11,9 @@ namespace WebDriverOnCore.WebSiteNavigation
         /// </summary>
         public void OpenWebSiteOnMainPage()
         {
+            NLogManager.LogMessage.Info("Opening of main page...");
             OpenWebSitePageOn(TestSettings.BaseUrl);
+            NLogManager.LogMessage.Info("Main page was opened");
         }
 
         /// <summary>

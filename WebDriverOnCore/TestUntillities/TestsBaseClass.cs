@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using WebDriverOnCore.LoggerManager;
 using WebDriverOnCore.WebDriver;
 using WebDriverOnCore.WebSiteNavigation;
 
@@ -11,26 +12,35 @@ namespace WebDriverOnCore.TestUntillities
         [OneTimeSetUp]
         protected virtual void TestFixtureSetUp()
         {
+            NLogManager.LogMessage.Info("Test fixture setup was started");
             DriverInitialize.Start();
             navigation = new NavigationSteps();
+
+            NLogManager.LogMessage.Info("Test fixture setup was finished");
         }
 
         [SetUp]
         protected virtual void TestSetup()
         {
+            NLogManager.LogMessage.Info("Test setup was started");
 
+            NLogManager.LogMessage.Info("Test fixture setup was finished");
         }
 
         [TearDown]
         protected virtual void TestTearDown()
         {
+            NLogManager.LogMessage.Info("Test tear down was started");
 
+            NLogManager.LogMessage.Info("Test tear down was finished");
         }
 
         [OneTimeTearDown]
         protected virtual void TestFixtureTearDown()
         {
+            NLogManager.LogMessage.Info("Test fixture tear down was started");
             DriverInitialize.Browser.Quit();
+            NLogManager.LogMessage.Info("Test fixture tear down was finished");
         }
     }
 }
