@@ -12,22 +12,32 @@ namespace WebDriverOnCore
 {
     public class SmokeTests: TestsBaseClass
     {
-        CommonPagesElementsSteps commonSteps;
+        #region Test fields
+
+        private CommonPagesElementsSteps _commonSteps;
+
+        #endregion
+
+        #region Tests setup and tear down
 
         protected override void TestSetup()
         {
             base.TestSetup();
 
             NLogManager.LogMessage.Info("Smoke tests setup was started");
-            commonSteps = new CommonPagesElementsSteps();            
+            _commonSteps = new CommonPagesElementsSteps();            
             navigation.OpenWebSiteOnMainPage();
             NLogManager.LogMessage.Info("Smoke tests setup was finished");
-        } 
+        }
+
+        #endregion
+
+        #region Tests
 
         [Test]
         [Category("Smoke")]
         [Description("Test asserts Football.ua site is available")]
-        public void FootballUa_AssertWebSiteIsAvailable()
+        public void AssertWebSiteIsAvailable()
         {           
             DriverInitialize.Browser.Url.Should().Be(TestSettings.BaseUrl);
             DriverInitialize.Browser.Title.Should().Be(ExpectedValues.MainPageHeadTitle);
@@ -36,18 +46,18 @@ namespace WebDriverOnCore
         [Test]
         [Category("Smoke")]
         [Description("Test asserts football football banner is present")]
-        public void FootballUa_AssertFooterElementsPresent()
+        public void AssertFooterElementsPresent()
         {
-            commonSteps.HeaderMenu.HeaderMain.Should().NotBeNull();
-            commonSteps.HeaderMenu.HeaderTopBanner.Should().NotBeNull();
+            _commonSteps.HeaderMenu.HeaderMain.Should().NotBeNull();
+            _commonSteps.HeaderMenu.HeaderTopBanner.Should().NotBeNull();
         }
 
         [Test]
         [Category("Smoke")]
         [Description("Test asserts Football.ua site is available")]
-        public void FootballUa_AssertAllCarouselMenuPresent()
+        public void AssertAllCarouselMenuPresent()
         {
-            commonSteps.GetHeaderNavigationMenuNames().Should().BeEquivalentTo(ExpectedValues.HeaderMenuItemsList.Select(s =>s.ToLower()));
+            _commonSteps.GetHeaderNavigationMenuNames().Should().BeEquivalentTo(ExpectedValues.HeaderMenuItemsList.Select(s =>s.ToLower()));
         }
 
         [Test]
@@ -59,10 +69,12 @@ namespace WebDriverOnCore
         [TestCase("Футбол на ТВ")]
         [TestCase("Конференции")]
         [Description("Test asserts Football.ua site is available")]
-        public void FootballUa_SwitchToAnotherMenu(string menuName)
+        public void UserSwitchesToCarouselMenu_UserShouldBeRedirectedToCorrespondingPage(string menuName)
         {
-            commonSteps.GetHeaderNavigationMenuWithName(menuName).Click();
+            _commonSteps.GetHeaderNavigationMenuWithName(menuName).Click();
             DriverInitialize.Browser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
         }
+
+        #endregion
     }
 }

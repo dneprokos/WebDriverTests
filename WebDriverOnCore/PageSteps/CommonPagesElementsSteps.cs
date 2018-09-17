@@ -1,7 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using FluentAssertions;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebDriverOnCore.PageElements.CommonPageSections;
 using WebDriverOnCore.PageSections.MainPageSections;
 using WebDriverOnCore.WebDriver;
 
@@ -11,6 +13,7 @@ namespace WebDriverOnCore.PageObjects
     {
         public HeaderSection HeaderMenu => new HeaderSection();
         public FooterSection FooterMenu => new FooterSection();
+        public LoginPopup LoginPopup => new LoginPopup();
 
         /// <summary>
         /// Get
@@ -41,9 +44,14 @@ namespace WebDriverOnCore.PageObjects
             {
                 throw new Exception("Navigation menu was not found");
             }
-
-
-
-        } 
+        }
+        
+        public void ClickEnterMenu()
+        {
+            HeaderMenu.EnterLink.Click();
+            var popup = LoginPopup.GetUserManagementPopupByAriaDescribedBy("register");
+            
+            popup.GetAttribute("display").Should().Equals("block");
+        }
     }
 }
