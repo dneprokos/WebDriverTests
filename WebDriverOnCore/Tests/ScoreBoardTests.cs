@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System.Threading;
 using WebDriverOnCore.PageObjects;
 using WebDriverOnCore.PageSteps;
 using WebDriverOnCore.TestsData;
@@ -35,17 +34,17 @@ namespace WebDriverOnCore.Tests
         [Test]
         [Category("LongRunning")]
         [TestCase("Матчи и турниры", "Англия. Премьер-лига")]
-        [Ignore("Drop-down list investigation")]
         public void UserChoicesAPLmatches_OnlyAplFixturesAndResultsShown(string menuName, string tornament)
         {
+            //Arrange
             _commonSteps.GetHeaderNavigationMenuWithName(menuName).Click();
             DriverInitialize.Browser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
 
-            Thread.Sleep(5000);
-
+            //Act
             _scoreboardPageSteps.SelectTornamentFromTornamentsDropDownList(tornament);
 
-            Thread.Sleep(5000);
+            //Assert
+            Assert.AreEqual(tornament, _scoreboardPageSteps.GetSelectedTornamentText());
         }
 
         #endregion

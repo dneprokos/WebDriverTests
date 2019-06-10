@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System.Collections.Generic;
 using WebDriverOnCore.TestUntillities;
 using WebDriverOnCore.WebDriver;
 
@@ -11,6 +10,9 @@ namespace WebDriverOnCore.PageElements.ScoreBoardPage
             SeleniumExtension.WaitUntilElementExists(
                 By.CssSelector("div.jselect"), 5);
 
-        public IWebElement Tornaments => DriverInitialize.Browser.FindElement(By.Id("ctl00_mod966_ddlChamp"));        
+        public IWebElement Tornaments => DriverInitialize.Browser.FindElement(By.Id("ctl00_mod966_ddlChamp"));
+
+        public IWebElement SelectedTornamentTitle => DriverInitialize.Browser.FindElement(By.CssSelector("div.select-block.tournament-select > div.jselect >div.jselect-title")); 
+
     }
 }

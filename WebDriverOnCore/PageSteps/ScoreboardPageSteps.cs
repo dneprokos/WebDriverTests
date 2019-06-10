@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System.Threading;
 using WebDriverOnCore.PageElements.ScoreBoardPage;
 using WebDriverOnCore.WebDriver;
 
@@ -10,19 +9,19 @@ namespace WebDriverOnCore.PageSteps
     {
         ScoreBoardElements ScoreBoardElements => new ScoreBoardElements();
 
-
-
         public void SelectTornamentFromTornamentsDropDownList(string tornament)
         {
+            //Makes option elements visible to webdriver
             IJavaScriptExecutor js = (IJavaScriptExecutor)DriverInitialize.Browser;
-            var jsScript = "document.getElementById(\"ctl00_mod966_ddlChamp\")";
-            js.ExecuteScript(jsScript + ".click()");
-
+            js.ExecuteScript("jQuery('#ctl00_mod966_ddlChamp').css('display', 'block')");
             
-
             SelectElement selectElement = new SelectElement(ScoreBoardElements.Tornaments);            
-            selectElement.SelectByText(tornament);
-            
+            selectElement.SelectByText(tornament);         
+        }
+
+        public string GetSelectedTornamentText()
+        {
+            return ScoreBoardElements.SelectedTornamentTitle.Text;
         }
     }
 }
