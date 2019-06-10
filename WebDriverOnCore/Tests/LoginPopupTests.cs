@@ -33,7 +33,6 @@ namespace WebDriverOnCore.Tests
 
         [Test]
         [Category("LongRunning")]
-        [Description("")]
         public void UserTrysToLoginWithEmptyCredentials_WarningMessageShouldBeShownInPopup()
         {
             _commonSteps.ClickEnterMenu();

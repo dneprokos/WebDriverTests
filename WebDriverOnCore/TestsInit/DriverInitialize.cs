@@ -7,8 +7,8 @@ namespace WebDriverOnCore.WebDriver
 {
     public static class DriverInitialize
     {
-        private static IWebDriver _browser;
-        public static IWebDriver Browser { get => _browser; private set => _browser = value; }
+        public static IWebDriver Browser { get; private set; }
+ 
 
         /// <summary>
         /// Gets browser from Test.runsettings or return exception

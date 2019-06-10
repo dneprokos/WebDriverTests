@@ -14,8 +14,6 @@ namespace WebDriverOnCore.TestUntillities
         {
             NLogManager.LogMessage.Info("Test fixture setup was started");
             DriverInitialize.Start();
-            navigation = new NavigationSteps();
-
             NLogManager.LogMessage.Info("Test fixture setup was finished");
         }
 
@@ -23,7 +21,7 @@ namespace WebDriverOnCore.TestUntillities
         protected virtual void TestSetup()
         {
             NLogManager.LogMessage.Info("Test setup was started");
-
+            navigation = new NavigationSteps();
             NLogManager.LogMessage.Info("Test fixture setup was finished");
         }
 
