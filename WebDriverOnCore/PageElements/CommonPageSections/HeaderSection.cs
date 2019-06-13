@@ -7,17 +7,21 @@ namespace WebDriverOnCore.PageSections.MainPageSections
 {
     public class HeaderSection
     {
-        public IWebElement HeaderMain => DriverInitialize.Browser.FindElement(By.ClassName("header-wrap"));
+        public IWebElement SearchInputButton => Driver.CurrentBrowser.FindElement(By.Id("searchInputButton"));
 
-        public IWebElement HeaderTopBanner => DriverInitialize.Browser.FindElement(By.Id("ctl00_topBanner"));
+        public IWebElement HeaderMain => Driver.CurrentBrowser.FindElement(By.ClassName("header-wrap"));
 
-        public List<IWebElement> HeaderNavigationMenuItems => DriverInitialize.Browser.FindElements(By.CssSelector(".header-nav > ul >li")).ToList();
+        public IWebElement HeaderTopBanner => Driver.CurrentBrowser.FindElement(By.Id("ctl00_topBanner"));
 
-        public IWebElement EnterLink => DriverInitialize.Browser.FindElement(By.Id("enter-link"));
+        public List<IWebElement> HeaderNavigationMenuItems => Driver.CurrentBrowser.FindElements(By.CssSelector(".header-nav > ul >li")).ToList();
 
-        public List<IWebElement> UserManagementPopups => DriverInitialize.Browser.FindElements(By
+        public IWebElement EnterLink => Driver.CurrentBrowser.FindElement(By.Id("enter-link"));
+
+        public List<IWebElement> UserManagementPopups => Driver.CurrentBrowser.FindElements(By
             .CssSelector("div[class='ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable ui-resizable']"))
             .ToList();
+
+        public IWebElement SearchField => Driver.CurrentBrowser.FindElement(By.Id("searchInput"));
 
         
     }

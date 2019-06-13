@@ -10,12 +10,12 @@ namespace WebDriverOnCore.TestUntillities
     {
         public static IWebElement WaitUntilElementExists(By locator, int maxSeconds)
         {
-            return new WebDriverWait(DriverInitialize.Browser, TimeSpan.FromSeconds(maxSeconds)).Until(dr => dr.FindElement(locator));               
+            return new WebDriverWait(Driver.CurrentBrowser, TimeSpan.FromSeconds(maxSeconds)).Until(dr => dr.FindElement(locator));               
         }
 
         public static IReadOnlyCollection<IWebElement> WaitUntilElementsExists(By locator, int maxSeconds)
         {
-            return new WebDriverWait(DriverInitialize.Browser, TimeSpan.FromSeconds(maxSeconds)).Until(dr => dr.FindElements(locator));
+            return new WebDriverWait(Driver.CurrentBrowser, TimeSpan.FromSeconds(maxSeconds)).Until(dr => dr.FindElements(locator));
         }
     }
 }

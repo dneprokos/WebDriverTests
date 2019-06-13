@@ -22,7 +22,7 @@ namespace WebDriverOnCore.WebSiteNavigation
         /// <param name="urlPath">Page you want to open</param>
         public void OpenWebSitePageOn(string urlPath)
         {
-            DriverInitialize.Browser.Navigate().GoToUrl(urlPath);
+            Driver.CurrentBrowser.Navigate().GoToUrl(urlPath);
         }
     }
 }

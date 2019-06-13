@@ -9,7 +9,7 @@ namespace WebDriverOnCore.Tests
     public class LoginPopupTests: TestsBaseClass
     {
         #region Test fields
-        private CommonPagesElementsSteps _commonSteps;
+        private CommonPageSteps _commonSteps;
         private LoginPopupSteps _loginPopupSteps;
 
         #endregion
@@ -21,7 +21,7 @@ namespace WebDriverOnCore.Tests
             base.TestSetup();
 
             NLogManager.LogMessage.Info("Login tests setup was started");
-            _commonSteps = new CommonPagesElementsSteps();
+            _commonSteps = new CommonPageSteps();
             _loginPopupSteps = new LoginPopupSteps();
             navigation.OpenWebSiteOnMainPage();
             NLogManager.LogMessage.Info("Smoke tests setup was finished");

@@ -13,7 +13,7 @@ namespace WebDriverOnCore.TestUntillities
         protected virtual void TestFixtureSetUp()
         {
             NLogManager.LogMessage.Info("Test fixture setup was started");
-            DriverInitialize.Start();
+            Driver.Start();
             NLogManager.LogMessage.Info("Test fixture setup was finished");
         }
 
@@ -37,7 +37,7 @@ namespace WebDriverOnCore.TestUntillities
         protected virtual void TestFixtureTearDown()
         {
             NLogManager.LogMessage.Info("Test fixture tear down was started");
-            DriverInitialize.Browser.Quit();
+            Driver.CurrentBrowser.Quit();
             NLogManager.LogMessage.Info("Test fixture tear down was finished");
         }
     }
