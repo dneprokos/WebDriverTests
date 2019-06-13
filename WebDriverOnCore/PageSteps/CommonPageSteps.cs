@@ -9,7 +9,7 @@ using WebDriverOnCore.WebDriver;
 
 namespace WebDriverOnCore.PageObjects
 {
-    public class CommonPagesElementsSteps
+    public class CommonPageSteps
     {
         public HeaderSection HeaderMenu => new HeaderSection();
         public FooterSection FooterMenu => new FooterSection();
@@ -21,7 +21,7 @@ namespace WebDriverOnCore.PageObjects
         /// <returns></returns>
         public string GetCurrentPageHeaderTitle()
         {
-            return DriverInitialize.Browser.Title;
+            return Driver.CurrentBrowser.Title;
         }
 
         public List<string> GetHeaderNavigationMenuNames()
@@ -52,6 +52,22 @@ namespace WebDriverOnCore.PageObjects
             var popup = LoginPopup.GetUserManagementPopupByAriaDescribedBy("register");
             
             popup.GetAttribute("display").Should().Equals("block");
+        }
+
+        public void StartSearchBy(string searchCriteria)
+        {
+            HeaderMenu.SearchField.Clear();
+            HeaderMenu.SearchField.SendKeys(searchCriteria);
+            HeaderMenu.SearchInputButton.Click();
+        }
+
+        public static void MakeElementOptionsVisible(string selector)
+        {
+            //Makes option elements visible to webdriver
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.CurrentBrowser;
+            var format = "jQuery('{0}').css('display', 'block')";
+            var script = string.Format(format, selector);
+            js.ExecuteScript(script);
         }
     }
 }

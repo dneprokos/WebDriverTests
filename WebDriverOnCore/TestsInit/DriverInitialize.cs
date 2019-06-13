@@ -5,9 +5,9 @@ using WebDriverOnCore.TestsInit;
 
 namespace WebDriverOnCore.WebDriver
 {
-    public static class DriverInitialize
+    public static class Driver
     {
-        public static IWebDriver Browser { get; private set; }
+        public static IWebDriver CurrentBrowser { get; private set; }
  
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace WebDriverOnCore.WebDriver
             switch (TestSettings.GetBrowser)
             {
                 case nameof(BrowserType.Chrome):
-                    Browser = BrowserFactory.CreateChromeDriver();
+                    CurrentBrowser = BrowserFactory.CreateChromeDriver();
                     NLogManager.LogMessage.Info("Chrome WebDriver was created");
                     break;
                 case nameof(BrowserType.Firefox):
@@ -28,7 +28,7 @@ namespace WebDriverOnCore.WebDriver
                     throw new NotImplementedException("There is no such browser. Please use exists browsers");
             }
 
-            return Browser;
+            return CurrentBrowser;
         }
 
 

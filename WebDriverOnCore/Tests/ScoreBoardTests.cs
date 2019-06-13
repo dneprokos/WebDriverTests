@@ -12,7 +12,7 @@ namespace WebDriverOnCore.Tests
     {
         #region Class fields
 
-        private CommonPagesElementsSteps _commonSteps;
+        private CommonPageSteps _commonSteps;
         private ScoreboardPageSteps _scoreboardPageSteps;
 
         #endregion
@@ -22,7 +22,7 @@ namespace WebDriverOnCore.Tests
         protected override void TestSetup()
         {
             base.TestSetup();
-            _commonSteps = new CommonPagesElementsSteps();
+            _commonSteps = new CommonPageSteps();
             _scoreboardPageSteps = new ScoreboardPageSteps();
             navigation.OpenWebSiteOnMainPage();
         }
@@ -38,7 +38,7 @@ namespace WebDriverOnCore.Tests
         {
             //Arrange
             _commonSteps.GetHeaderNavigationMenuWithName(menuName).Click();
-            DriverInitialize.Browser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
+            Driver.CurrentBrowser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
 
             //Act
             _scoreboardPageSteps.SelectTornamentFromTornamentsDropDownList(tornament);

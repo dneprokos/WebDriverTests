@@ -16,12 +16,12 @@ namespace WebDriverOnCore.PageElements.CommonPageSections
             return HeaderMenu.UserManagementPopups.First(el => el.GetAttribute("aria-describedby").Equals(area));
         }
 
-        public IWebElement LoginEmail => DriverInitialize.Browser.FindElement(By.Id("loginemail"));
+        public IWebElement LoginEmail => Driver.CurrentBrowser.FindElement(By.Id("loginemail"));
 
-        public IWebElement LoginPassword => DriverInitialize.Browser.FindElement(By.Id("loginpassword"));
+        public IWebElement LoginPassword => Driver.CurrentBrowser.FindElement(By.Id("loginpassword"));
 
         //Find LoginButton by Css selector
-        public IWebElement LoginButton => DriverInitialize.Browser.FindElement(By.CssSelector("#loginblock button.submit"));
+        public IWebElement LoginButton => Driver.CurrentBrowser.FindElement(By.CssSelector("#loginblock button.submit"));
 
         //Find LoginButton by XPath. Just for example
         //public IWebElement LoginButton = DriverInitialize.Browser.FindElement(By.XPath("//button[.='вход']"));

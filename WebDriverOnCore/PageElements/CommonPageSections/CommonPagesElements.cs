@@ -7,7 +7,7 @@ namespace WebDriverOnCore.PageElements.CommonPageSections
 {
     public class CommonPagesElements
     {
-        public List<IWebElement> SubmitButtons => DriverInitialize.Browser.FindElements(By.CssSelector(".submit")).ToList();
+        public List<IWebElement> SubmitButtons => Driver.CurrentBrowser.FindElements(By.CssSelector(".submit")).ToList();
 
           
     }

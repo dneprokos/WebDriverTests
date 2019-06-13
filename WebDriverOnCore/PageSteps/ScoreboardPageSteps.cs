@@ -1,7 +1,6 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium.Support.UI;
 using WebDriverOnCore.PageElements.ScoreBoardPage;
-using WebDriverOnCore.WebDriver;
+using WebDriverOnCore.PageObjects;
 
 namespace WebDriverOnCore.PageSteps
 {
@@ -11,10 +10,7 @@ namespace WebDriverOnCore.PageSteps
 
         public void SelectTornamentFromTornamentsDropDownList(string tornament)
         {
-            //Makes option elements visible to webdriver
-            IJavaScriptExecutor js = (IJavaScriptExecutor)DriverInitialize.Browser;
-            js.ExecuteScript("jQuery('#ctl00_mod966_ddlChamp').css('display', 'block')");
-            
+            CommonPageSteps.MakeElementOptionsVisible("#ctl00_mod966_ddlChamp");            
             SelectElement selectElement = new SelectElement(ScoreBoardElements.Tornaments);            
             selectElement.SelectByText(tornament);         
         }

@@ -20,6 +20,8 @@ namespace WebDriverOnCore.TestsInit
 
         public static string ConferencesUrl => BaseUrl + TestContext.Parameters["conferences"];
 
+        public static string SearchResultsUrl => BaseUrl + TestContext.Parameters["searchResultsUrl"];
+
         public static int WaitElementTimeOut => 2;
 
     }

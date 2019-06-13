@@ -14,7 +14,7 @@ namespace WebDriverOnCore
     {
         #region Test fields
 
-        private CommonPagesElementsSteps _commonSteps;
+        private CommonPageSteps _commonSteps;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace WebDriverOnCore
             base.TestSetup();
 
             NLogManager.LogMessage.Info("Smoke tests setup was started");
-            _commonSteps = new CommonPagesElementsSteps();            
+            _commonSteps = new CommonPageSteps();            
             navigation.OpenWebSiteOnMainPage();
             NLogManager.LogMessage.Info("Smoke tests setup was finished");
         }
@@ -39,8 +39,8 @@ namespace WebDriverOnCore
         [Description("Test asserts Football.ua site is available")]
         public void AssertWebSiteIsAvailable()
         {           
-            DriverInitialize.Browser.Url.Should().Be(TestSettings.BaseUrl);
-            DriverInitialize.Browser.Title.Should().Be(ExpectedValues.MainPageHeadTitle);
+            Driver.CurrentBrowser.Url.Should().Be(TestSettings.BaseUrl);
+            Driver.CurrentBrowser.Title.Should().Be(ExpectedValues.MainPageHeadTitle);
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace WebDriverOnCore
         public void UserSwitchesToCarouselMenu_UserShouldBeRedirectedToCorrespondingPage(string menuName)
         {
             _commonSteps.GetHeaderNavigationMenuWithName(menuName).Click();
-            DriverInitialize.Browser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
+            Driver.CurrentBrowser.Url.Should().Be(ExpectedValues.PageNameUrlDictionary[menuName]);
         }
 
         #endregion
